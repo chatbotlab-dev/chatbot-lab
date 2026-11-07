@@ -1,0 +1,6 @@
+{
+  "name": "CHATBOT LAB - แพลตฟอร์มการเรียนรู้ AI Chatbot & Web Integration",
+  "description": "เรียนรู้วิธีสร้าง AI Chatbot ด้วย Google AI Studio และการนำไปติดตั้งบนเว็บไซต์แบบครบวงจร ตั้งแต่ System Instructions จนถึงการเชื่อมต่อ Frontend & Backend",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
