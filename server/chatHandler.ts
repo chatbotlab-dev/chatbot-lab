@@ -1,3 +1,4 @@
+
 import { GoogleGenAI } from '@google/genai';
 
 export interface ChatHistoryItem {
@@ -54,10 +55,17 @@ function extractFirstCodeSnippet(text: string): string | undefined {
 /**
  * Generates relevant follow-up suggestions based on the topic discussed.
  */
-function generateFollowUpSuggestions(userMessage: string, replyText: string): string[] {
+function generateFollowUpSuggestions(
+  userMessage: string,
+  replyText: string
+): string[] {
   const combined = (userMessage + ' ' + replyText).toLowerCase();
-  
-  if (combined.includes('system instruction') || combined.includes('คำสั่งระบบ') || combined.includes('เสาหลัก')) {
+
+  if (
+    combined.includes('system instruction') ||
+    combined.includes('คำสั่งระบบ') ||
+    combined.includes('เสาหลัก')
+  ) {
     return [
       'การตั้งค่า Temperature ควรใช้เท่าไหร่?',
       'ทำไมต้องมี Backend Proxy?',
@@ -65,7 +73,12 @@ function generateFollowUpSuggestions(userMessage: string, replyText: string): st
     ];
   }
 
-  if (combined.includes('api key') || combined.includes('backend') || combined.includes('proxy') || combined.includes('ปลอดภัย')) {
+  if (
+    combined.includes('api key') ||
+    combined.includes('backend') ||
+    combined.includes('proxy') ||
+    combined.includes('ปลอดภัย')
+  ) {
     return [
       'ขอตัวอย่างโค้ด Express Proxy',
       'วิธีซ่อน Key ในไฟล์ .env',
@@ -73,7 +86,11 @@ function generateFollowUpSuggestions(userMessage: string, replyText: string): st
     ];
   }
 
-  if (combined.includes('temperature') || combined.includes('parameter') || combined.includes('top-p')) {
+  if (
+    combined.includes('temperature') ||
+    combined.includes('parameter') ||
+    combined.includes('top-p')
+  ) {
     return [
       '4 เสาหลักของ System Instructions',
       'ทำไมต้องซ่อน API Key ใน Frontend?',
@@ -81,7 +98,12 @@ function generateFollowUpSuggestions(userMessage: string, replyText: string): st
     ];
   }
 
-  if (combined.includes('ติดตั้ง') || combined.includes('widget') || combined.includes('script') || combined.includes('react')) {
+  if (
+    combined.includes('ติดตั้ง') ||
+    combined.includes('widget') ||
+    combined.includes('script') ||
+    combined.includes('react')
+  ) {
     return [
       'เปรียบเทียบ React vs Script Tag',
       'ทำไมต้องมี Backend Proxy?',
@@ -101,7 +123,10 @@ function generateFollowUpSuggestions(userMessage: string, replyText: string): st
  */
 export async function processChatRequest(
   body: ChatRequestBody
-): Promise<{ status: number; data: ChatSuccessResponse | ChatErrorResponse }> {
+): Promise<{
+  status: number;
+  data: ChatSuccessResponse | ChatErrorResponse;
+}> {
   // 1. Validation: Message existence and type
   if (!body || typeof body !== 'object') {
     return {
@@ -113,7 +138,8 @@ export async function processChatRequest(
     };
   }
 
-  const rawMessage = typeof body.message === 'string' ? body.message.trim() : '';
+  const rawMessage =
+    typeof body.message === 'string' ? body.message.trim() : '';
 
   if (!rawMessage) {
     return {
@@ -125,7 +151,7 @@ export async function processChatRequest(
     };
   }
 
-  // 2. Validation: Message length (limit to 2,000 chars to prevent abuse)
+  // 2. Validation: Message length
   if (rawMessage.length > 2000) {
     return {
       status: 400,
@@ -138,6 +164,7 @@ export async function processChatRequest(
 
   // 3. Validation: Server-side API Key availability
   const apiKey = process.env.GEMINI_API_KEY?.trim();
+
   if (!apiKey || apiKey === 'MY_GEMINI_API_KEY') {
     return {
       status: 503,
@@ -149,7 +176,7 @@ export async function processChatRequest(
     };
   }
 
-  // 4. Format conversation history (limit to last 16 turns to manage context and cost)
+  // 4. Format conversation history
   const formattedContents: Array<{
     role: 'user' | 'model';
     parts: Array<{ text: string }>;
@@ -157,18 +184,23 @@ export async function processChatRequest(
 
   if (Array.isArray(body.history)) {
     const safeHistory = body.history.slice(-16);
+
     for (const item of safeHistory) {
       if (!item || typeof item.text !== 'string') continue;
+
       const text = item.text.trim();
       if (!text) continue;
 
       const role =
-        item.role === 'model' || item.role === 'bot' || item.sender === 'bot'
+        item.role === 'model' ||
+        item.role === 'bot' ||
+        item.sender === 'bot'
           ? 'model'
           : 'user';
 
       // Avoid consecutive duplicate roles
       const last = formattedContents[formattedContents.length - 1];
+
       if (last && last.role === role) {
         last.parts[0].text += `\n${text}`;
       } else {
@@ -181,12 +213,16 @@ export async function processChatRequest(
   }
 
   // Ensure history starts with user if not empty
-  while (formattedContents.length > 0 && formattedContents[0].role !== 'user') {
+  while (
+    formattedContents.length > 0 &&
+    formattedContents[0].role !== 'user'
+  ) {
     formattedContents.shift();
   }
 
   // Append current user message
   const lastItem = formattedContents[formattedContents.length - 1];
+
   if (lastItem && lastItem.role === 'user') {
     lastItem.parts[0].text += `\n${rawMessage}`;
   } else {
@@ -196,7 +232,7 @@ export async function processChatRequest(
     });
   }
 
-  // 5. Call Gemini API via modern @google/genai SDK
+  // 5. Call Gemini API
   try {
     const ai = new GoogleGenAI({
       apiKey,
@@ -243,15 +279,21 @@ export async function processChatRequest(
     };
   } catch (err: unknown) {
     console.error('Gemini API call failed with error:', err);
-    const errorObj = err as { status?: number; message?: string; name?: string };
+
+    const errorObj = err as {
+      status?: number;
+      message?: string;
+      name?: string;
+    };
+
     const errorMessage = errorObj.message || String(err);
     const errorName = errorObj.name || '';
 
-    // Timeout & Deadline Exceeded
+    // Timeout (504)
     if (
       errorName === 'TimeoutError' ||
       errorName === 'AbortError' ||
-      errorMessage.includes('timeout') ||
+      errorMessage.toLowerCase().includes('timeout') ||
       errorMessage.includes('DEADLINE_EXCEEDED') ||
       errorMessage.includes('Deadline expired') ||
       errorObj.status === 504
@@ -261,18 +303,32 @@ export async function processChatRequest(
         data: {
           error: 'GATEWAY_TIMEOUT',
           message:
-            'การเชื่อมต่อกับ Gemini API ใช้เวลานานเกินกำหนด กรุณาลองส่งคำถามใหม่อีกครั้ง',
+            'การเชื่อมต่อกับ Gemini API ใช้เวลานานเกินกำหนด กรุณาลองใหม่อีกครั้ง',
         },
       };
     }
 
-    // Rate limit / Resource exhausted / Quota exceeded
+    // Gemini temporarily unavailable (503)
+    if (
+      errorObj.status === 503 ||
+      errorMessage.includes('UNAVAILABLE')
+    ) {
+      return {
+        status: 503,
+        data: {
+          error: 'GEMINI_UNAVAILABLE',
+          message:
+            'ขณะนี้เซิร์ฟเวอร์ Gemini มีผู้ใช้งานหนาแน่น กรุณาลองใหม่อีกครั้งภายหลัง',
+        },
+      };
+    }
+
+    // Rate limit / Quota (429)
     if (
       errorObj.status === 429 ||
       errorMessage.includes('429') ||
       errorMessage.includes('RESOURCE_EXHAUSTED') ||
-      errorMessage.includes('quota') ||
-      errorMessage.includes('Quota exceeded') ||
+      errorMessage.toLowerCase().includes('quota') ||
       errorMessage.includes('RATE_LIMIT')
     ) {
       return {
@@ -280,12 +336,12 @@ export async function processChatRequest(
         data: {
           error: 'RATE_LIMIT_EXCEEDED',
           message:
-            'ขณะนี้ระบบทดลองใช้งานถึงขีดจำกัดชั่วคราวแล้ว เนื่องจากโควตา Gemini API ของระบบสาธิตเต็ม กรุณากลับมาทดลองใหม่ภายหลัง',
+            'ขณะนี้ระบบทดลองใช้งานถึงขีดจำกัดชั่วคราวแล้ว กรุณากลับมาทดลองใหม่ภายหลัง',
         },
       };
     }
 
-    // Invalid API Key or Unauthorized
+    // Invalid API Key (403)
     if (
       errorMessage.includes('403') ||
       errorMessage.includes('API_KEY_INVALID') ||
@@ -298,28 +354,33 @@ export async function processChatRequest(
         data: {
           error: 'INVALID_API_KEY',
           message:
-            'GEMINI_API_KEY บนเซิร์ฟเวอร์ไม่ถูกต้อง หรือไม่มีสิทธิ์เข้าถึงโมเดล กรุณาตรวจสอบและตั้งค่า API Key ที่ถูกต้องใน Secrets หรือไฟล์ .env ของเซิร์ฟเวอร์',
+            'GEMINI_API_KEY บนเซิร์ฟเวอร์ไม่ถูกต้อง หรือไม่มีสิทธิ์เข้าถึงโมเดล กรุณาตรวจสอบการตั้งค่า API Key',
         },
       };
     }
 
-    // Model not found or general 404
-    if (errorMessage.includes('404') || errorMessage.includes('NOT_FOUND')) {
+    // Model not found (404)
+    if (
+      errorMessage.includes('404') ||
+      errorMessage.includes('NOT_FOUND')
+    ) {
       return {
         status: 404,
         data: {
           error: 'MODEL_NOT_FOUND',
-          message: 'ไม่พบโมเดล AI ที่ระบุบนเซิร์ฟเวอร์ กรุณาตรวจสอบการตั้งค่าโมเดล',
+          message:
+            'ไม่พบโมเดล AI ที่ระบุบนเซิร์ฟเวอร์ กรุณาตรวจสอบการตั้งค่าโมเดล',
         },
       };
     }
 
-    // Generic server/network error
+    // Generic server/network error (502)
     return {
       status: 502,
       data: {
         error: 'GEMINI_API_ERROR',
-        message: 'เกิดข้อผิดพลาดในการเชื่อมต่อกับ Gemini API กรุณาลองใหม่อีกครั้งในภายหลัง',
+        message:
+          'เกิดข้อผิดพลาดในการเชื่อมต่อกับ Gemini API กรุณาลองใหม่อีกครั้งในภายหลัง',
       },
     };
   }
