@@ -11,6 +11,9 @@ import {
   HelpCircle,
   Info,
   ExternalLink,
+  BookOpen,
+  Terminal,
+  ShieldCheck,
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -55,37 +58,37 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
   const navItems = [
     {
       href: '#intro',
-      num: '01',
-      label: 'บทนำและแนวคิด',
-      sublabel: 'Chatbot คืออะไรและทำงานอย่างไร',
+      num: 'บทที่ 1',
+      label: 'พื้นฐาน & Google AI Studio',
+      sublabel: 'Gen AI ทำงานอย่างไร และทัวร์ UI AI Studio',
       icon: MessageSquare,
     },
     {
       href: '#tutorial',
-      num: '02',
-      label: 'คู่มือ Google AI Studio',
-      sublabel: 'ขั้นตอนสร้าง Prompt และ System Instructions',
-      icon: Cpu,
+      num: 'บทที่ 2-3',
+      label: 'Prompt, Instructions & API Key',
+      sublabel: '4 เสาหลักคำสั่งระบบ, Few-Shot และ Parameters',
+      icon: Terminal,
     },
     {
       href: '#integration',
-      num: '03',
-      label: 'การติดตั้งบนเว็บไซต์',
-      sublabel: 'สถาปัตยกรรม Frontend & Backend Proxy',
+      num: 'บทที่ 4-5',
+      label: 'Backend Proxy & การติดตั้งบนเว็บ',
+      sublabel: 'ซ่อน API Key, Express Server และ Checklist Go-Live',
       icon: Layers,
     },
     {
       href: '#demo',
-      num: '04',
+      num: 'Live Demo',
       label: 'ห้องทดลองสนทนาสด',
-      sublabel: 'ทดสอบถามตอบกับ AI Assistant จำลอง',
+      sublabel: 'ทดสอบถามตอบกับ AI Assistant จำลองบนเว็บจริง',
       icon: Bot,
     },
     {
       href: '#about',
-      num: '05',
-      label: 'เกี่ยวกับโครงงาน',
-      sublabel: 'วัตถุประสงค์ เทคโนโลยี และผู้จัดทำ',
+      num: 'About',
+      label: 'ข้อมูลโครงงาน & ผู้จัดทำ',
+      sublabel: 'วัตถุประสงค์ เทคโนโลยี และพื้นที่ข้อมูลโครงงาน',
       icon: Info,
     },
   ];
@@ -124,24 +127,24 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
             </a>
 
             {/* Zone 2: Navigation Links (Desktop Quick Access) */}
-            <nav className="hidden lg:flex items-center gap-6 xl:gap-8 text-sm font-medium text-slate-300">
+            <nav className="hidden lg:flex items-center gap-5 xl:gap-7 text-xs xl:text-sm font-medium text-slate-300">
               <a
                 href="#intro"
                 className="hover:text-purple-400 transition-colors whitespace-nowrap shrink-0 py-1"
               >
-                บทนำ
+                บทที่ 1: AI Studio
               </a>
               <a
                 href="#tutorial"
                 className="hover:text-purple-400 transition-colors whitespace-nowrap shrink-0 py-1"
               >
-                คู่มือ AI Studio
+                บทที่ 2-3: Prompt & Parameters
               </a>
               <a
                 href="#integration"
                 className="hover:text-purple-400 transition-colors whitespace-nowrap shrink-0 py-1"
               >
-                การติดตั้งบนเว็บ
+                บทที่ 4-5: Backend & Deploy
               </a>
               <a
                 href="#demo"
@@ -185,7 +188,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
                   <Menu className="w-5 h-5 text-purple-400" />
                 )}
                 <span className="text-xs font-semibold hidden md:inline">
-                  {isMenuOpen ? 'ปิด' : 'เมนู'}
+                  {isMenuOpen ? 'ปิด' : 'สารบัญ'}
                 </span>
               </button>
             </div>
@@ -218,7 +221,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
                     CHATBOT LAB
                   </h3>
                   <span className="text-[11px] text-purple-400 font-mono">
-                    เมนูนำทาง (Navigation)
+                    สารบัญหลักสูตร 5 บทเรียน
                   </span>
                 </div>
               </div>
@@ -235,7 +238,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
             {/* Navigation List */}
             <div className="p-5 sm:p-6 space-y-2.5 flex-1">
               <span className="text-[11px] font-mono uppercase text-slate-500 tracking-wider block mb-3 px-1">
-                เลือกหัวข้อที่ต้องการเรียนรู้
+                เลือกบทเรียนที่ต้องการศึกษา
               </span>
 
               {navItems.map((item) => {
@@ -282,8 +285,8 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenChat }) => {
               </button>
 
               <div className="flex items-center justify-between text-xs text-slate-500 pt-1 font-mono">
-                <span>Learn · Build · Integrate</span>
-                <span>SPA Platform</span>
+                <span>5-Chapter AI Masterclass</span>
+                <span>Google AI Studio</span>
               </div>
             </div>
 

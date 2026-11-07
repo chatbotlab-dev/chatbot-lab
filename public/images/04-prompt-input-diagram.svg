@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#080D1A"/>
+      <stop offset="100%" stop-color="#050811"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg4)"/>
+  <rect x="20" y="20" width="1160" height="635" rx="14" fill="none" stroke="#1E293B" stroke-width="2"/>
+
+  <rect x="20" y="20" width="1160" height="50" rx="14" fill="#0F172A"/>
+  <text x="50" y="52" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold">Google AI Studio · Prompt Box &amp; Multimodal Attachments</text>
+  <text x="750" y="51" fill="#C084FC" font-family="monospace" font-size="12">[แผนภาพอธิบายช่องเขียน Prompt - ai.google.dev]</text>
+
+  <!-- Chat Canvas Preview Area -->
+  <rect x="80" y="90" width="1040" height="280" rx="12" fill="#030712" stroke="#1F2937" stroke-width="1"/>
+  <text x="110" y="130" fill="#64748B" font-family="sans-serif" font-size="14" font-weight="bold">Chat History Canvas</text>
+  
+  <!-- Sample Prior Turn -->
+  <rect x="700" y="160" width="400" height="45" rx="8" fill="#4F46E5"/>
+  <text x="720" y="188" fill="#FFFFFF" font-family="sans-serif" font-size="13">สวัสดีครับ ร้านเปิดทำการกี่โมงถึงกี่โมงครับ?</text>
+  
+  <rect x="110" y="225" width="500" height="55" rx="8" fill="#1E293B" stroke="#334155" stroke-width="1"/>
+  <text x="130" y="250" fill="#C084FC" font-family="sans-serif" font-size="12" font-weight="bold">Gemini 2.5 Flash:</text>
+  <text x="130" y="270" fill="#E2E8F0" font-family="sans-serif" font-size="13">สวัสดีครับ! ร้านเปิดให้บริการวันจันทร์ - เสาร์ เวลา 09:00 - 18:00 น. ครับ</text>
+
+  <!-- Big Prompt Input Box Detail -->
+  <rect x="80" y="395" width="1040" height="170" rx="12" fill="#0F172A" stroke="#A855F7" stroke-width="2"/>
+  
+  <!-- Callout 1: Multimodal Insert Button -->
+  <circle cx="120" cy="445" r="20" fill="#1E293B" stroke="#475569" stroke-width="1.5"/>
+  <text x="112" y="453" fill="#38BDF8" font-family="sans-serif" font-size="22">+</text>
+  <circle cx="135" cy="430" r="12" fill="#EF4444"/>
+  <text x="131" y="434" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">1</text>
+  <text x="150" y="440" fill="#94A3B8" font-family="sans-serif" font-size="11">[1] ปุ่มแนบรูปภาพ / ไฟล์เสียง / วิดีโอ</text>
+
+  <!-- Callout 2: Textarea -->
+  <text x="150" y="475" fill="#FFFFFF" font-family="monospace" font-size="15">ช่วยสรุปเงื่อนไขการรับประกันสินค้า (14 วัน) และวิธีเปลี่ยนเครื่องใหม่ให้เป็นข้อๆ หน่อยครับ</text>
+  <circle cx="900" cy="430" r="12" fill="#EF4444"/>
+  <text x="896" y="434" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">2</text>
+
+  <!-- Bottom Toolbar inside input -->
+  <line x1="80" y1="515" x2="1120" y2="515" stroke="#1E293B" stroke-width="1"/>
+  <text x="105" y="542" fill="#64748B" font-family="monospace" font-size="12">Tokens: 82 / 1,000,000</text>
+
+  <!-- Callout 3: Run / Send Button -->
+  <rect x="970" y="523" width="135" height="34" rx="6" fill="#2563EB"/>
+  <text x="995" y="545" fill="#FFFFFF" font-family="sans-serif" font-size="13" font-weight="bold">Run (Ctrl ↵)</text>
+  <circle cx="1105" cy="520" r="12" fill="#EF4444"/>
+  <text x="1101" y="524" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">3</text>
+
+  <!-- Explanatory footer -->
+  <rect x="80" y="585" width="1040" height="50" rx="8" fill="#111827"/>
+  <text x="100" y="615" fill="#CBD5E1" font-family="sans-serif" font-size="13">[1] ปุ่มแทรกสื่อ (Multimodal) | [2] ช่องเขียนคำถามระบุเป้าหมายชัดเจน | [3] ปุ่ม Run หรือคีย์ลัด Ctrl + Enter เพื่อส่งคำสั่ง</text>
+</svg>

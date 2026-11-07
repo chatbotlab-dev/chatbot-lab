@@ -26,11 +26,11 @@ export const Footer: React.FC = () => {
 
           {/* Nav mirror */}
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-400">
-            <a href="#intro" className="hover:text-purple-400 transition-colors py-1">บทนำ</a>
-            <a href="#tutorial" className="hover:text-purple-400 transition-colors py-1">คู่มือ AI Studio</a>
-            <a href="#integration" className="hover:text-purple-400 transition-colors py-1">การติดตั้งบนเว็บ</a>
+            <a href="#intro" className="hover:text-purple-400 transition-colors py-1">บทที่ 1: AI Studio</a>
+            <a href="#tutorial" className="hover:text-purple-400 transition-colors py-1">บทที่ 2-3: Prompt & Parameters</a>
+            <a href="#integration" className="hover:text-purple-400 transition-colors py-1">บทที่ 4-5: Backend & Deploy</a>
             <a href="#demo" className="hover:text-purple-400 transition-colors py-1">ห้องทดลองสด</a>
-            <a href="#about" className="hover:text-purple-400 transition-colors py-1">เกี่ยวกับเรา</a>
+            <a href="#about" className="hover:text-purple-400 transition-colors py-1">เกี่ยวกับโครงงาน</a>
           </div>
 
           {/* Back to top */}

@@ -5,6 +5,8 @@ export interface ChatMessage {
   timestamp: string;
   codeSnippet?: string;
   suggestions?: string[];
+  isError?: boolean;
+  errorType?: 'rate_limit' | 'auth' | 'network' | 'server' | 'validation';
 }
 
 export interface PromptTemplate {

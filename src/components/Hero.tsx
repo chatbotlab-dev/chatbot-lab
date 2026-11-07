@@ -189,6 +189,75 @@ export const Hero: React.FC<HeroProps> = ({ onOpenChat }) => {
           </div>
 
         </div>
+
+        {/* 5-Chapter Masterclass Curriculum Ribbon */}
+        <div className="mt-12 sm:mt-16 pt-8 border-t border-slate-800/80">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <span className="text-xs font-mono uppercase text-purple-400 font-bold tracking-wider">
+              CURRICULUM ROADMAP · แผนผังหลักสูตร 5 บทเรียนสู่มืออาชีพ
+            </span>
+            <span className="text-[11px] text-slate-500 font-mono">
+              ตั้งแต่เริ่มต้นจนถึงเผยแพร่ออนไลน์จริง
+            </span>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-2.5 sm:gap-3 text-left">
+            <a
+              href="#intro"
+              className="p-3 rounded-xl bg-slate-900/60 hover:bg-purple-950/40 border border-slate-800 hover:border-purple-500/40 transition-all group block"
+            >
+              <span className="text-[10px] font-mono font-bold text-purple-400 block mb-0.5">บทที่ 1</span>
+              <h5 className="text-xs font-semibold text-white group-hover:text-purple-300 transition-colors line-clamp-1">
+                ทำความรู้จัก AI Studio
+              </h5>
+              <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">วิวัฒนาการ LLM & ทัวร์ UI</p>
+            </a>
+
+            <a
+              href="#tutorial"
+              className="p-3 rounded-xl bg-slate-900/60 hover:bg-purple-950/40 border border-slate-800 hover:border-purple-500/40 transition-all group block"
+            >
+              <span className="text-[10px] font-mono font-bold text-indigo-400 block mb-0.5">บทที่ 2</span>
+              <h5 className="text-xs font-semibold text-white group-hover:text-purple-300 transition-colors line-clamp-1">
+                Prompt & Instructions
+              </h5>
+              <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">4 เสาหลัก & Few-Shot</p>
+            </a>
+
+            <a
+              href="#tutorial"
+              className="p-3 rounded-xl bg-slate-900/60 hover:bg-purple-950/40 border border-slate-800 hover:border-purple-500/40 transition-all group block"
+            >
+              <span className="text-[10px] font-mono font-bold text-purple-400 block mb-0.5">บทที่ 3</span>
+              <h5 className="text-xs font-semibold text-white group-hover:text-purple-300 transition-colors line-clamp-1">
+                Parameters & API Key
+              </h5>
+              <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">Temperature & Quota ฟรี</p>
+            </a>
+
+            <a
+              href="#integration"
+              className="p-3 rounded-xl bg-slate-900/60 hover:bg-purple-950/40 border border-slate-800 hover:border-purple-500/40 transition-all group block"
+            >
+              <span className="text-[10px] font-mono font-bold text-indigo-400 block mb-0.5">บทที่ 4</span>
+              <h5 className="text-xs font-semibold text-white group-hover:text-purple-300 transition-colors line-clamp-1">
+                สถาปัตยกรรมความปลอดภัย
+              </h5>
+              <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">3-Tier & Express Proxy</p>
+            </a>
+
+            <a
+              href="#integration"
+              className="p-3 rounded-xl bg-slate-900/60 hover:bg-emerald-950/40 border border-slate-800 hover:border-emerald-500/40 transition-all group block col-span-2 sm:col-span-1"
+            >
+              <span className="text-[10px] font-mono font-bold text-emerald-400 block mb-0.5">บทที่ 5</span>
+              <h5 className="text-xs font-semibold text-white group-hover:text-emerald-300 transition-colors line-clamp-1">
+                ติดตั้ง Widget & Deploy
+              </h5>
+              <p className="text-[10px] text-slate-400 mt-0.5 line-clamp-1">3 วิธีติดตั้ง & Go Live</p>
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

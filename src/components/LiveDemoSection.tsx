@@ -11,24 +11,24 @@ export const LiveDemoSection: React.FC<LiveDemoSectionProps> = ({
 }) => {
   const suggestedPrompts = [
     {
-      title: 'Google AI Studio คืออะไร?',
-      category: 'Concept',
-      prompt: 'Google AI Studio คืออะไร และเหมาะกับการเริ่มต้นสร้าง Chatbot อย่างไร?',
+      title: 'Prompt สร้าง Chatbot สถานศึกษา',
+      category: 'บทเรียน AI Studio · Step 3',
+      prompt: 'สร้าง Chatbot ผู้ช่วยตอบคำถามสำหรับนักเรียนและนักศึกษา สามารถตอบคำถามเกี่ยวกับข้อมูลทั่วไปของสถานศึกษา ให้คำแนะนำด้านการเรียน และแนะนำบริการต่าง ๆ โดยใช้ภาษาไทยที่สุภาพ เข้าใจง่าย และตอบตรงประเด็น ออกแบบหน้าตา Chatbot ให้ทันสมัย ใช้งานง่าย และรองรับทั้งโทรศัพท์มือถือและคอมพิวเตอร์',
     },
     {
-      title: 'ตัวอย่าง System Instructions',
-      category: 'Prompt',
-      prompt: 'ขอตัวอย่างการเขียน System Instructions สำหรับ Chatbot บนเว็บหน่อยครับ',
+      title: 'Google AI Studio คืออะไร?',
+      category: 'บทที่ 1 · AI Studio',
+      prompt: 'Google AI Studio คืออะไร และมี 5 ขั้นตอนสร้าง Chatbot อย่างไรบ้าง?',
+    },
+    {
+      title: '4 เสาหลัก System Instructions',
+      category: 'บทที่ 2 · Prompting',
+      prompt: 'ขอคำอธิบาย 4 เสาหลักของ System Instructions พร้อมตัวอย่างสำหรับร้านค้าหน่อยครับ',
     },
     {
       title: 'ทำไมต้องซ่อน API Key?',
-      category: 'Security',
-      prompt: 'ทำไมเราถึงห้ามใส่ Gemini API Key ในโค้ด Frontend เด็ดขาด?',
-    },
-    {
-      title: 'การตั้งค่า Temperature',
-      category: 'Settings',
-      prompt: 'ควรตั้งค่า Temperature เท่าไหร่สำหรับแชทบอทตอบคำถามลูกค้า?',
+      category: 'บทที่ 4 · Security',
+      prompt: 'ทำไมเราถึงห้ามใส่ Gemini API Key ในโค้ด Frontend เด็ดขาด และสถาปัตยกรรมที่ถูกต้องเป็นอย่างไร?',
     },
   ];
 

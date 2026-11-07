@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#090E1C"/>
+      <stop offset="100%" stop-color="#050812"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="675" fill="url(#bg3)"/>
+  <rect x="20" y="20" width="1160" height="635" rx="14" fill="none" stroke="#1E293B" stroke-width="2"/>
+
+  <!-- Top bar -->
+  <rect x="20" y="20" width="1160" height="50" rx="14" fill="#0F172A"/>
+  <text x="50" y="52" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold">Google AI Studio · Model Selection Guide</text>
+  <text x="750" y="51" fill="#C084FC" font-family="monospace" font-size="12">[แผนภาพอธิบายการเลือกโมเดล Gemini - ai.google.dev]</text>
+
+  <!-- Model Selector Dropdown Visualization -->
+  <rect x="80" y="100" width="1040" height="160" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <text x="110" y="140" fill="#94A3B8" font-family="sans-serif" font-size="14">คลิกที่ตัวเลือกโมเดล (มุมบนขวาของหน้าต่าง Workspace):</text>
+  
+  <rect x="110" y="160" width="400" height="55" rx="8" fill="#1E293B" stroke="#A855F7" stroke-width="2"/>
+  <text x="130" y="194" fill="#FFFFFF" font-family="monospace" font-size="16" font-weight="bold">Model: gemini-2.5-flash ▼</text>
+  <circle cx="510" cy="160" r="16" fill="#EF4444"/>
+  <text x="505" y="166" fill="#FFFFFF" font-family="sans-serif" font-size="16" font-weight="bold">1</text>
+
+  <!-- Side-by-side Model Comparison -->
+  <!-- Model Card 1: Gemini 2.5 Flash -->
+  <rect x="80" y="290" width="500" height="330" rx="12" fill="#130E26" stroke="#A855F7" stroke-width="2"/>
+  <rect x="105" y="315" width="180" height="28" rx="6" fill="#9333EA"/>
+  <text x="115" y="334" fill="#FFFFFF" font-family="sans-serif" font-size="12" font-weight="bold">★ แนะนำสำหรับ Chatbot</text>
+  
+  <text x="105" y="375" fill="#FFFFFF" font-family="monospace" font-size="22" font-weight="bold">gemini-2.5-flash</text>
+  <text x="105" y="405" fill="#D8B4FE" font-family="sans-serif" font-size="14">ตอบสนองเร็วพิเศษ (Ultra-low Latency &lt; 0.8 วินาที)</text>
+  
+  <line x1="105" y1="425" x2="555" y2="425" stroke="#3B0764" stroke-width="1"/>
+  <text x="105" y="455" fill="#E9D5FF" font-family="sans-serif" font-size="13">• Context Window: 1,000,000 Tokens (รองรับประวัติแชทยาว)</text>
+  <text x="105" y="485" fill="#E9D5FF" font-family="sans-serif" font-size="13">• Free Tier Quota: 15 RPM / 1,500 RPD / 1M TPM</text>
+  <text x="105" y="515" fill="#E9D5FF" font-family="sans-serif" font-size="13">• การใช้งาน: FAQ, ตอบคำถามสินค้า, แนะนำบริการ, บอทเว็บไซต์</text>
+  <text x="105" y="545" fill="#E9D5FF" font-family="sans-serif" font-size="13">• ความคุ้มค่า: ต้นทุนโทเค็นต่ำที่สุด ตอบได้รวดเร็วทันใจ</text>
+
+  <!-- Model Card 2: Gemini 1.5 Pro -->
+  <rect x="620" y="290" width="500" height="330" rx="12" fill="#0F172A" stroke="#334155" stroke-width="1"/>
+  <rect x="645" y="315" width="130" height="28" rx="6" fill="#334155"/>
+  <text x="655" y="334" fill="#94A3B8" font-family="sans-serif" font-size="12" font-weight="bold">Heavy Reasoning</text>
+
+  <text x="645" y="375" fill="#FFFFFF" font-family="monospace" font-size="22" font-weight="bold">gemini-1.5-pro</text>
+  <text x="645" y="405" fill="#94A3B8" font-family="sans-serif" font-size="14">เน้นการคิดวิเคราะห์หลายขั้นตอน (Latency 2 - 5 วินาที)</text>
+
+  <line x1="645" y1="425" x2="1095" y2="425" stroke="#1E293B" stroke-width="1"/>
+  <text x="645" y="455" fill="#CBD5E1" font-family="sans-serif" font-size="13">• Context Window: 2,000,000 Tokens</text>
+  <text x="645" y="485" fill="#CBD5E1" font-family="sans-serif" font-size="13">• Free Tier Quota: 2 RPM / 50 RPD</text>
+  <text x="645" y="515" fill="#CBD5E1" font-family="sans-serif" font-size="13">• การใช้งาน: วิเคราะห์เอกสารกฎหมาย, สรุปงานวิจัย, Debugging</text>
+  <text x="645" y="545" fill="#CBD5E1" font-family="sans-serif" font-size="13">• ข้อควรระวัง: ประมวลผลช้ากว่า ไม่เหมาะกับ Real-time Chat</text>
+</svg>
