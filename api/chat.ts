@@ -1,6 +1,6 @@
 
 import type { IncomingMessage, ServerResponse } from 'http';
-import { processChatRequest } from '../server/chatHandler';
+import { processChatRequest } from '../server/chatHandler.ts';
 
 interface VercelRequestLike extends IncomingMessage {
   body?: any;
