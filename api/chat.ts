@@ -1,3 +1,4 @@
+
 import type { IncomingMessage, ServerResponse } from 'http';
 import { processChatRequest } from '../server/chatHandler';
 
@@ -26,21 +27,19 @@ async function parseRequestBody(req: VercelRequestLike): Promise<any> {
     return typeof req.body === 'string' ? JSON.parse(req.body) : req.body;
   }
 
-  // Fallback for raw stream
   const chunks: Buffer[] = [];
   for await (const chunk of req) {
     chunks.push(typeof chunk === 'string' ? Buffer.from(chunk) : chunk);
   }
+
   const raw = Buffer.concat(chunks).toString('utf-8');
   return raw ? JSON.parse(raw) : {};
 }
 
-/**
- * Serverless Function handler for Vercel deployment.
- * Routes POST /api/chat directly to the Gemini API proxy logic.
- */
-export default async function handler(req: VercelRequestLike, res: VercelResponseLike) {
-  // Only accept POST requests
+export default async function handler(
+  req: VercelRequestLike,
+  res: VercelResponseLike
+) {
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
     return sendJson(res, 405, {
@@ -50,15 +49,25 @@ export default async function handler(req: VercelRequestLike, res: VercelRespons
   }
 
   try {
-    const body = await parseRequestBody(req);
+    let body: any;
+
+    try {
+      body = await parseRequestBody(req);
+    } catch (error) {
+      console.error('Invalid request body:', error);
+      return sendJson(res, 400, {
+        error: 'INVALID_JSON',
+        message: 'รูปแบบข้อมูลที่ส่งมาไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง',
+      });
+    }
+
     const result = await processChatRequest(body);
     return sendJson(res, result.status, result.data);
   } catch (error) {
-    console.error('Error in Vercel /api/chat function:', error);
+    console.error('Vercel /api/chat handler failed:', error);
     return sendJson(res, 500, {
       error: 'INTERNAL_SERVER_ERROR',
-      message: 'เกิดข้อผิดพลาดในการประมวลผลคำขอ',
+      message: 'เซิร์ฟเวอร์เกิดข้อผิดพลาด กรุณาตรวจสอบ Runtime Logs',
     });
   }
 }
-
