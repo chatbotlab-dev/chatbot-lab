@@ -240,7 +240,7 @@ export async function processChatRequest(
         headers: {
           'User-Agent': 'aistudio-build',
         },
-        timeout: 25000,
+        timeout: 55000,
       },
     });
 
