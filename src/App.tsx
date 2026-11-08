@@ -4,6 +4,7 @@
  */
 
 import React, { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { IntroductionSection } from './components/IntroductionSection';
@@ -63,6 +64,9 @@ export default function App() {
         externalPrompt={externalPrompt}
         onClearExternalPrompt={() => setExternalPrompt(null)}
       />
+
+      {/* Vercel Web Analytics */}
+      <Analytics />
     </div>
   );
 }
